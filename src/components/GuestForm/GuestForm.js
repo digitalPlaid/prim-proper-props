@@ -1,4 +1,22 @@
-function GuestForm() {
+import {useState} from 'react';
+
+function GuestForm({addGuest}) {
+
+    let [newGuestName, setNewGuestName] = useState('');
+    let [newGuestMeal, setNewGuestMeal] = useState('false');
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (newGuestName) {
+          addGuest({newGuestName, newGuestMeal});
+          setNewGuestName('');
+          setNewGuestMeal(false);
+        }
+        else {
+          alert('The new guest needs a name!');
+        }
+      }
+
     return (
         <>
             <h2>Add a new guest</h2>
@@ -46,3 +64,5 @@ function GuestForm() {
         </>
     );
 };
+
+export default GuestForm;

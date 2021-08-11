@@ -10,8 +10,7 @@ import DinnerSupplies from '../DinnerSupplies/DinnerSupplies'
 
 function App() {
   let [guestList, setGuestList] = useState([]);
-  let [newGuestName, setNewGuestName] = useState('');
-  let [newGuestMeal, setNewGuestMeal] = useState('false');
+
 
   //On load, get guests
   useEffect(() => {
@@ -30,13 +29,9 @@ function App() {
   }
 
 
-  const addGuest = () => {
-    axios.post('/guests', { name: newGuestName, kidsMeal: newGuestMeal })
+  const addGuest = (newGuest) => {
+    axios.post('/guests', newGuest)
       .then(response => {
-        // clear inputs
-        setNewGuestName('');
-        setNewGuestMeal(false);
-
         getGuests();
       })
       .catch(err => {
@@ -46,17 +41,6 @@ function App() {
   };
 
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (newGuestName) {
-      addGuest();
-    }
-    else {
-      alert('The new guest needs a name!');
-    }
-  }
-
-  console.log(newGuestMeal)
   return (
     <div className="App">
       <Header />
