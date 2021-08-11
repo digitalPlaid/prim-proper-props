@@ -21,6 +21,7 @@ function App() {
     axios.get('/guests')
       .then(response => {
         setGuestList(response.data)
+
       })
       .catch(err => {
         alert('error getting guests');
@@ -30,6 +31,7 @@ function App() {
 
 
   const addGuest = (newGuest) => {
+    console.log(newGuest)
     axios.post('/guests', newGuest)
       .then(response => {
         getGuests();
@@ -47,7 +49,7 @@ function App() {
       <PartyLeader guestList={guestList}/>
       <GuestForm addGuest={addGuest} />
       <GuestList guestList={guestList} />
-      <DinnerSupplies guestList={guestList} />
+      <DinnerSupplies count={guestList.length} />
       <Footer />
     </div>
   );

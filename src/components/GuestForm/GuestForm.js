@@ -8,7 +8,7 @@ function GuestForm({addGuest}) {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (newGuestName) {
-          addGuest({newGuestName, newGuestMeal});
+          addGuest({name: newGuestName, kidsMeal: newGuestMeal});
           setNewGuestName('');
           setNewGuestMeal(false);
         }

@@ -1,13 +1,13 @@
 import SilverWare from "../SilverWare/SilverWare";
 
-function DinnerSupplies (guestList) {
-
+function DinnerSupplies ({count}) {
+    console.log('from dinner suppplies', count);
     return (
         <>
             <h2>Dinner Supplies</h2>
-            <SilverWare name="Spoons" count={guestList.length} />
-            <SilverWare name="Forks" count={guestList.length} />
-            <SilverWare name="Knives" count={guestList.length} />
+            <SilverWare name="Spoons" count={count} />
+            <SilverWare name="Forks" count={count} />
+            <SilverWare name="Knives" count={count} />
         </>
     );
 };
